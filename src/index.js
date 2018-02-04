@@ -13,6 +13,7 @@ import createHistory from "history/createBrowserHistory";
 import configureStore from "./stores/configureStore";
 
 import routes from "./routes";
+import App from "./components/App";
 
 // Create a history of your choosing (we're using a browser history in this case)
 const history = createHistory();
@@ -34,7 +35,7 @@ const renderRouter = routes.map((route, i) => (
 ReactDOM.render(
   <Provider store={store} key="provider">
     <ConnectedRouter history={history}>
-      <main>{renderRouter}</main>
+      <App>{renderRouter}</App>
     </ConnectedRouter>
   </Provider>,
   document.getElementById("app")
