@@ -1,3 +1,4 @@
+const autoprefixer = require("autoprefixer");
 const webpack = require("webpack");
 const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -13,10 +14,42 @@ module.exports = merge(CommonConfig, {
   module: {
     rules: [
       {
-        test: /\.(css|sass|scss|less)/,
+        test: /\.(css|sass|scss)/,
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
-          use: "css-loader!sass-loader!less-loader"
+          use: [
+            {
+              loader: "css-loader",
+              options: {
+                modules: "true",
+                localIdentName: "[name]__[local]-[hash:base64:5]",
+                sourceMap: true
+              }
+            },
+            {
+              loader: "postcss-loader",
+              options: {
+                plugins: [
+                  autoprefixer({
+                    browsers: [
+                      ">1%",
+                      "last 4 versions",
+                      "Firefox ESR",
+                      "not ie < 9" // React doesn't support IE8 anyway
+                    ],
+                    flexbox: "no-2009"
+                  })
+                ],
+                sourceMap: true
+              }
+            },
+            {
+              loader: "sass-loader",
+              options: {
+                modules: "true"
+              }
+            }
+          ]
         })
       }
     ]

@@ -1,3 +1,4 @@
+const autoprefixer = require("autoprefixer");
 const webpack = require("webpack");
 const path = require("path");
 const merge = require("webpack-merge");
@@ -16,21 +17,23 @@ module.exports = merge(CommonConfig, {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.(css|scss|sass)$/,
         use: [
-          require.resolve("style-loader"),
           {
-            loader: require.resolve("css-loader"),
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader",
             options: {
-              importLoaders: 1
+              modules: "true",
+              localIdentName: "[name]__[local]-[hash:base64:5]",
+              sourceMap: true
             }
           },
           {
-            loader: require.resolve("postcss-loader"),
+            loader: "postcss-loader",
             options: {
-              ident: "postcss",
-              plugins: () => [
-                require("postcss-flexbugs-fixes"),
+              plugins: [
                 autoprefixer({
                   browsers: [
                     ">1%",
@@ -40,43 +43,12 @@ module.exports = merge(CommonConfig, {
                   ],
                   flexbox: "no-2009"
                 })
-              ]
-            }
-          }
-        ]
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          {
-            loader: "style-loader"
-          },
-          {
-            loader: "css-loader",
-            options: {
-              modules: "true",
-              localIdentName: "[name]__[local]-[hash:base64:5]"
+              ],
+              sourceMap: true
             }
           },
           {
             loader: "sass-loader",
-            options: {
-              modules: "true"
-            }
-          }
-        ]
-      },
-      {
-        test: /\.less$/,
-        use: [
-          {
-            loader: "style-loader"
-          },
-          {
-            loader: "css-loader"
-          },
-          {
-            loader: "less-loader",
             options: {
               modules: "true"
             }
