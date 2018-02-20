@@ -2,14 +2,25 @@ const webpack = require("webpack");
 const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 const isDev = process.env.NODE_ENV == "development";
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: "./src/index.html",
   filename: "index.html",
-  inject: "body"
+  inject: "body",
+  minify: {
+    removeComments: true,
+    collapseWhitespace: true,
+    removeRedundantAttributes: true,
+    useShortDoctype: true,
+    removeEmptyAttributes: true,
+    removeStyleLinkTypeAttributes: true,
+    keepClosingSlash: true,
+    minifyJS: true,
+    minifyCSS: true,
+    minifyURLs: true
+  }
 });
 
 module.exports = {
@@ -23,17 +34,23 @@ module.exports = {
         loader: "babel-loader"
       },
       {
-        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+        test: /\.(eot|ttf|woff|woff2)$/,
         loader: "url-loader",
         options: {
-          limit: 10000
+          limit: 10000,
+          name: "fonts/[name].[hash:8].[ext]"
+        }
+      },
+      {
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+        loader: require.resolve("url-loader"),
+        options: {
+          limit: 10000,
+          name: "media/[name].[hash:8].[ext]"
         }
       }
     ]
   },
-  resolve: {
-    extensions: [".jsx", ".js", ".json", ".scss", ".sass", ".css"],
-    alias: { "react/lib/ReactMount": "react-dom/lib/ReactMount" }
-  },
-  plugins: [HtmlWebpackPluginConfig, new CleanWebpackPlugin(["/build"])]
+
+  plugins: [HtmlWebpackPluginConfig]
 };

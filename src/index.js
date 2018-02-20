@@ -1,5 +1,3 @@
-import "core-js/es6/map";
-import "core-js/es6/set";
 // Core
 import React from "react";
 import ReactDOM from "react-dom";

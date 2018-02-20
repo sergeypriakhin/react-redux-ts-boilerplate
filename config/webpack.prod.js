@@ -1,7 +1,10 @@
 const autoprefixer = require("autoprefixer");
 const webpack = require("webpack");
 const path = require("path");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const merge = require("webpack-merge");
 const CommonConfig = require("./webpack.common");
 
@@ -61,13 +64,16 @@ module.exports = merge(CommonConfig, {
         NODE_ENV: JSON.stringify("production")
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: false,
-      compress: true
+    new UglifyJsPlugin({
+      sourceMap: true
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
     }),
+    new CleanWebpackPlugin(["/build"]),
+    new CopyWebpackPlugin([
+      { from: path.join(__dirname, "../public"), to: "" }
+    ]),
     new ExtractTextPlugin("bundle.css")
   ]
 });
