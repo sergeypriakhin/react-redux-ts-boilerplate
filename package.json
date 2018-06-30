@@ -1,53 +1,61 @@
 {
-  "name": "sp-react-redux-boilerplate",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "clean": "rimraf build",
-    "start:dev": "webpack-dev-server --color --open --hot",
-    "dev": "npm run start:dev --mode=development",
-    "build": "npm run clean && webpack --mode=production",
-    "test": "npm run test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sergeypriakhin/sp-react-redux-boilerplate.git"
-  },
-  "keywords": [
-    "typescript",
-    "react",
-    "redux",
-    "boilerplate",
-    "react starter kit",
-    "react redux boilerplate"
-  ],
-  "author": "Sergey Priakhin <chucho>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sergeypriakhin/sp-react-redux-boilerplate/issues"
-  },
-  "homepage": "https://github.com/sergeypriakhin/sp-react-redux-boilerplate#readme",
-  "devDependencies": {
-    "@types/redux-logger": "^3.0.6",
-    "awesome-typescript-loader": "^5.2.0",
-    "clean-webpack-plugin": "^0.1.19",
-    "html-webpack-plugin": "^3.2.0",
-    "react-hot-loader": "^4.3.3",
-    "redux-logger": "^3.0.6",
-    "source-map-loader": "^0.2.3",
-    "typescript": "^2.9.2",
-    "webpack": "^4.12.1",
-    "webpack-cli": "^3.0.8",
-    "webpack-dev-server": "^3.1.4"
-  },
-  "dependencies": {
-    "@types/react": "^16.4.1",
-    "@types/react-dom": "^16.0.6",
-    "@types/react-redux": "^6.0.2",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-redux": "^5.0.7",
-    "redux-thunk": "^2.3.0"
-  }
+	"name": "sp-react-redux-ts-boilerplate",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"clean": "rimraf build",
+		"watch": "webpack --watch",
+		"start:dev": "webpack-dev-server --color --open --hot  --mode development",
+		"dev": "npm run start:dev",
+		"build": "npm run clean && webpack --mode production",
+		"test": "npm run test"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/sergeypriakhin/sp-react-redux-boilerplate.git"
+	},
+	"keywords": [
+		"typescript",
+		"react",
+		"redux",
+		"boilerplate",
+		"react starter kit",
+		"react redux boilerplate"
+	],
+	"author": "Sergey Priakhin <chucho>",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/sergeypriakhin/sp-react-redux-boilerplate/issues"
+	},
+	"homepage": "https://github.com/sergeypriakhin/sp-react-redux-boilerplate#readme",
+	"devDependencies": {
+		"@types/redux-logger": "^3.0.6",
+		"awesome-typescript-loader": "^5.2.0",
+		"css-loader": "^0.28.11",
+		"cssnano": "^3.10.0",
+		"file-loader": "^1.1.11",
+		"html-webpack-plugin": "^3.2.0",
+		"mini-css-extract-plugin": "^0.4.0",
+		"postcss-cssnext": "^3.1.0",
+		"postcss-loader": "^2.1.5",
+		"react-hot-loader": "^4.3.3",
+		"redux-logger": "^3.0.6",
+		"source-map-loader": "^0.2.3",
+		"style-loader": "^0.21.0",
+		"typescript": "^2.9.2",
+		"webpack": "^4.12.1",
+		"webpack-cli": "^3.0.8",
+		"webpack-dev-server": "^3.1.4",
+		"webpack-manifest-plugin": "^2.0.3"
+	},
+	"dependencies": {
+		"@types/react": "^16.4.1",
+		"@types/react-dom": "^16.0.6",
+		"@types/react-redux": "^6.0.2",
+		"react": "^16.4.1",
+		"react-dom": "^16.4.1",
+		"react-redux": "^5.0.7",
+		"redux-thunk": "^2.3.0"
+	}
 }

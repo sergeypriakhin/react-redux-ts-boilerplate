@@ -1,7 +1,8 @@
-import * as React from "react";
+import * as React from 'react';
+import * as s from './App.scss';
 
 export default class App extends React.Component {
-  render() {
-    return <div>App Typescript!!!</div>;
-  }
+	render() {
+		return <h1 className={s.title}>App Typescript!!!</h1>;
+	}
 }
