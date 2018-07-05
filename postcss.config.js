@@ -1,3 +1,5 @@
-module.exports = {
-  plugins: [require("postcss-cssnext"), require("cssnano")]
-};
+module.exports = ({ options }) => ({
+	plugins: {
+		'postcss-cssnext': options.cssnext ? options.cssnext : false
+	}
+});
