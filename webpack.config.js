@@ -34,7 +34,11 @@ module.exports = function(env, argv) {
 		module: {
 			rules: [
 				// All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-				{ test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
+				{
+					test: /\.tsx?$/,
+					loader: 'awesome-typescript-loader',
+					exclude: /node_modules/
+				},
 
 				// All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
 				{ enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
@@ -110,9 +114,9 @@ module.exports = function(env, argv) {
 				chunkFilename: 'css/[name].chunk.css'
 			}),
 			new WebpackPwaManifest({
-				name: 'sp-react-redux-ts-boilerplate',
-				short_name: 'react-redux-ts',
-				description: 'My React Boilerplate-based project!',
+				name: 'react-redux-ts-boilerplate',
+				short_name: 'rrt-boilerplate',
+				description: 'React boilerplate-based project!',
 				background_color: '#fafafa',
 				theme_color: '#b1624d'
 			})
