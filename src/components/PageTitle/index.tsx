@@ -1,10 +1,10 @@
 import * as React from 'react';
-import * as s from './PageTitle.scss';
+import * as s from './PageTitle.css';
 
 interface PageTitleProps {
-	title: string;
+  title: string;
 }
 
 export default function PageTitle({ title }: PageTitleProps) {
-	return <h1 className={s.title}>{title}</h1>;
+  return <h1 className={s.title}>{title}</h1>;
 }

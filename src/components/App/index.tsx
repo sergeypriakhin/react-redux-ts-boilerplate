@@ -6,9 +6,9 @@ import NotFoundPage from '../../pages/NotFoundPage';
 // components
 import Header from '../Header';
 import 'normalize.css';
-import './App.scss';
+import './App.css';
 
-export default class App extends React.Component {
+export default class App extends React.PureComponent {
   render() {
     return (
       <main>

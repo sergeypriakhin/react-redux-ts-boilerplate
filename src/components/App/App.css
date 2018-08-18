@@ -3,5 +3,9 @@ html {
   box-sizing: border-box;
   color: #000;
   cursor: default;
-  font: 100%/1.5 sans-serif;
+  font: 62.5%/1.5 sans-serif;
+}
+
+body {
+  font-size: 1.4rem;
 }

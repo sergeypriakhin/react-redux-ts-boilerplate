@@ -1,9 +1,9 @@
 import * as React from 'react';
-import * as s from './Header.scss';
+import * as s from './Header.css';
 
 const Header = () => {
   return (
-    <header className={s.wrap}>
+    <header role="presentation" className={s.root}>
       <nav className={s.nav}>
         <a
           className={s.link}

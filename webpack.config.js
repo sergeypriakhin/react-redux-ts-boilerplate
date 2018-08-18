@@ -68,7 +68,11 @@ module.exports = function(env, argv) {
           ],
         },
         {
-          test: /\.(png|jpg|gif|svg)$/,
+          test: /\.(eot|otf|ttf|woff|woff2)$/,
+          use: 'file-loader',
+        },
+        {
+          test: /\.(png|jpg|gif)$/,
           loader: 'file-loader',
           options: {
             name: 'images/[name].[ext]?[hash]',
