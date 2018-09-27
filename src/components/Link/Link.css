@@ -1,16 +1,4 @@
 .root {
-  background-color: #fff;
-}
-
-.nav {
-  flex-shrink: 0;
-  display: flex;
-  justify-content: space-between;
-  padding: 0.75rem;
-  font-size: 1.6rem;
-}
-
-.link {
   background-color: transparent;
   color: #d77158;
   box-shadow: inset 0 0 0 0.1em #d77158;
@@ -28,7 +16,7 @@
   transition: background-color 0.2s ease-out, box-shadow 0.1s ease-out;
 }
 
-.link:hover {
+.root:hover {
   color: #fff;
   background-color: #d77158;
 }
