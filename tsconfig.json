@@ -2,7 +2,8 @@
   "compilerOptions": {
     "outDir": "./build/",
     "noImplicitAny": true,
-    "module": "commonjs",
+    "module": "esnext",
+    "moduleResolution": "node",
     "target": "es5",
     "jsx": "react",
     "allowJs": true,
@@ -11,5 +12,8 @@
   },
   "include": ["./src/**/*"],
   "exclude": [".vscode", "node_modules", "build", "webpack", "jest"],
-  "types": ["typePatches"]
+  "types": ["typePatches"],
+  "paths": {
+    "@components/*": ["src/components/*"]
+  }
 }
