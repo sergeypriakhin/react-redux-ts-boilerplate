@@ -1,13 +1,15 @@
 {
-	"compilerOptions": {
-		"outDir": "./build/",
-		"noImplicitAny": true,
-		"module": "commonjs",
-		"target": "es5",
-		"jsx": "react",
-		"allowJs": true
-	},
-	"include": ["./src/**/*"],
-	"exclude": ["node_modules", "build", "webpack", "jest"],
-	"types": ["typePatches"]
+  "compilerOptions": {
+    "outDir": "./build/",
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es5",
+    "jsx": "react",
+    "allowJs": true,
+    "lib": ["es2015", "es6", "dom", "dom.iterable"],
+    "typeRoots": ["./node_modules/@types"]
+  },
+  "include": ["./src/**/*"],
+  "exclude": [".vscode", "node_modules", "build", "webpack", "jest"],
+  "types": ["typePatches"]
 }
