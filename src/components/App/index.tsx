@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Layout, Menu, Icon } from 'antd';
 // pages
-import HomePage from '../../pages/Home';
+import Dashboard from '../../pages/Dashboard';
 import NotFoundPage from '../../pages/NotFoundPage';
 
 import * as style from './App.css';
@@ -27,10 +27,10 @@ export default class App extends React.PureComponent {
       <Layout style={{ minHeight: '100vh' }}>
         <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
           <div className={`logo ${style.logo}`} />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1">
-              <Icon type="user" />
-              <span>nav 1</span>
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={['dashboard']}>
+            <Menu.Item key="dashboard">
+              <Icon type="dashboard" />
+              <span>Dashboard</span>
             </Menu.Item>
             <Menu.Item key="2">
               <Icon type="video-camera" />
@@ -59,7 +59,7 @@ export default class App extends React.PureComponent {
             }}
           >
             <Switch>
-              <Route exact path="/" component={HomePage} />
+              <Route exact path="/" component={Dashboard} />
               <Route path="" component={NotFoundPage} />
             </Switch>
           </Content>
