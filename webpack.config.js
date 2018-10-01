@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -23,6 +24,10 @@ module.exports = function(env, argv) {
     resolve: {
       // Add '.ts' and '.tsx' as resolvable extensions.
       extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+      alias: {
+        '@components': path.resolve(__dirname, 'src/components/'),
+        '@pages': path.resolve(__dirname, 'src/pages/'),
+      },
     },
 
     devServer: {

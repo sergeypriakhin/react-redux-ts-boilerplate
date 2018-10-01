@@ -4,8 +4,8 @@ import * as React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Layout, Menu, Icon } from 'antd';
 // pages
-import Dashboard from '../../pages/Dashboard';
-import NotFoundPage from '../../pages/NotFoundPage';
+import Dashboard from '@pages/Dashboard';
+import NotFoundPage from '@pages/NotFoundPage';
 
 import * as style from './App.css';
 

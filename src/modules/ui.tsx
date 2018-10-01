@@ -1,5 +1,5 @@
 interface UIState {
-  collapsed: boolean;
+  readonly collapsed: boolean;
 }
 
 const initialState: UIState = {

@@ -8,13 +8,14 @@
     "jsx": "react",
     "allowJs": true,
     "lib": ["es2015", "es6", "dom", "dom.iterable"],
-    "typeRoots": ["./node_modules/@types"]
+    "typeRoots": ["./node_modules/@types"],
+    "baseUrl": "src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@pages/*": ["pages/*"]
+    }
   },
   "include": ["./src/**/*"],
   "exclude": [".vscode", "node_modules", "build", "webpack", "jest"],
-  "types": ["typePatches"],
-  "paths": {
-    "@components/*": ["src/components/*"],
-    "@pages/*": ["src/pages/*"]
-  }
+  "types": ["typePatches"]
 }
