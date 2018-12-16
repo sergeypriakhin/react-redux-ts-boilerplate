@@ -19,14 +19,14 @@ module.exports = function(env, argv) {
     },
 
     // Enable sourcemaps for debugging webpack's output.
-    devtool: isDev ? 'inline-source-map' : 'source-map',
+    devtool: isDev ? 'cheap-eval-source-map' : 'source-map',
 
     resolve: {
       // Add '.ts' and '.tsx' as resolvable extensions.
       extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
       alias: {
-        '@components': path.resolve(__dirname, 'src/components/'),
-        '@pages': path.resolve(__dirname, 'src/pages/'),
+        '@component': path.resolve(__dirname, 'src/components/'),
+        '@module': path.resolve(__dirname, 'src/modules/'),
       },
     },
 
@@ -40,7 +40,7 @@ module.exports = function(env, argv) {
     module: {
       rules: [
         {
-          test: /\.tsx?$/,
+          test: /\.(ts|tsx)$/,
           loader: 'awesome-typescript-loader',
           options: {
             getCustomTransformers: () => ({
@@ -66,34 +66,34 @@ module.exports = function(env, argv) {
         },
 
         // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-        { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
-        {
-          test: /\.(sa|sc|c)ss$/,
-          include: /src/,
-          exclude: /node_modules/,
-          loaders: [
-            isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-            {
-              loader: 'css-loader',
-              options: {
-                modules: true,
-                localIdentName: '[name]__[local]-[hash:base64:5]',
-              },
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                config: {
-                  ctx: {
-                    cssnext: {
-                      browsers: ['last 2 versions', '> 5%'],
-                    },
-                  },
-                },
-              },
-            },
-          ],
-        },
+        // { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
+        // {
+        //   test: /\.(sa|sc|c)ss$/,
+        //   include: /src/,
+        //   exclude: /node_modules/,
+        //   loaders: [
+        //     isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+        //     {
+        //       loader: 'css-loader',
+        //       options: {
+        //         modules: true,
+        //         localIdentName: '[name]__[local]-[hash:base64:5]',
+        //       },
+        //     },
+        //     {
+        //       loader: 'postcss-loader',
+        //       options: {
+        //         config: {
+        //           ctx: {
+        //             cssnext: {
+        //               browsers: ['last 2 versions', '> 5%'],
+        //             },
+        //           },
+        //         },
+        //       },
+        //     },
+        //   ],
+        // },
         {
           test: /\.(eot|otf|ttf|woff|woff2)$/,
           use: 'file-loader',
