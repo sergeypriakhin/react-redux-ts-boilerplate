@@ -8,9 +8,9 @@ interface Props {
 export default function MainLayout(props: Props) {
   const { children } = props;
   return (
-    <div>
+    <React.Fragment>
       <Header />
       <main>{children}</main>
-    </div>
+    </React.Fragment>
   );
 }

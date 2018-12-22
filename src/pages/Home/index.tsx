@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import Title from '@component/Title';
 
-export interface DashboardProps {}
+export interface HomeProps {}
 
-class DashboardPage extends React.Component<DashboardProps> {
+class Home extends React.Component<HomeProps> {
   // Since state and props are static,
   // there's no need to re-render this component
   shouldComponentUpdate() {
@@ -15,9 +16,9 @@ class DashboardPage extends React.Component<DashboardProps> {
     return (
       <React.Fragment>
         <Helmet>
-          <title>Dashboard</title>
+          <title>Home page</title>
         </Helmet>
-        DashboardPage
+        <Title>Boilerplate for React with Redux, TypeScript and routing.</Title>
       </React.Fragment>
     );
   }
@@ -25,5 +26,5 @@ class DashboardPage extends React.Component<DashboardProps> {
 
 export default connect(
   null,
-  null,
-)(DashboardPage);
+  null
+)(Home);

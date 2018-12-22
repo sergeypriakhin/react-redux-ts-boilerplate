@@ -3,12 +3,13 @@
     "baseUrl": "./src/", // enables project relative paths config
     "paths": {
       // define paths mappings
-      "@component/*": ["components/*"],
-      "@module/*": ["modules/*"]
+      "@page/*": ["pages/*"],
+      "@module/*": ["modules/*"],
+      "@component/*": ["components/*"]
     },
     "outDir": "build/", // target for compiled files
     "allowSyntheticDefaultImports": true, // no errors with commonjs modules interop
-    "esModuleInterop": true,
+    // "esModuleInterop": true,
     "allowJs": true, // include js files
     "checkJs": true, // typecheck js files
     "declaration": false, // don't emit declarations
