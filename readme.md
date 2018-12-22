@@ -31,7 +31,7 @@ Here's a curated list of packages that you should be at least familiar with befo
 - **src** is where you code.
 - **src/components** stateless, reusable components, like Button, Input etc.
 - **src/locales** translate
-- **src/modules** stateful parent components (actions, reducers, selectors etc).
+- **src/modules** handles your state (actions, reducers, selectors etc).
 - **src/pages** are the root level components, ones which are directly mounted on level 1 routes.
 - **src/stores** initialises the redux store.
 - **src/utils** have utilities like your api wrapper, date utils, string utils etc.
