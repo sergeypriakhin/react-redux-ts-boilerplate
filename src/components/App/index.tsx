@@ -1,21 +1,29 @@
-import 'normalize.css';
-import './App.css';
-
 import * as React from 'react';
+import { Helmet } from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
-// pages
-import HomePage from '../../pages/Home';
-import NotFoundPage from '../../pages/NotFoundPage';
+import { ThemeProvider } from 'styled-components';
+// import theme from 'styled-theming';
 
-export default class App extends React.PureComponent {
-  render() {
-    return (
-      <main>
+import Home from '@page/Home';
+import MainLayout from '@component/Layout';
+
+import GlobalStyle from '../../global-styles';
+
+export default function App() {
+  return (
+    <ThemeProvider theme={{ mode: 'light' }}>
+      <MainLayout>
+        <Helmet defaultTitle="Typescript React Boilerplate">
+          <meta
+            name="description"
+            content="A Typescript React Boilerplate application"
+          />
+        </Helmet>
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="" component={NotFoundPage} />
+          <Route exact={true} path="/" component={Home} />
         </Switch>
-      </main>
-    );
-  }
+        <GlobalStyle />
+      </MainLayout>
+    </ThemeProvider>
+  );
 }

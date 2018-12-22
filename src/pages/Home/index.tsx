@@ -1,28 +1,30 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import * as s from './Home.css';
-import LinkA from '../../components/Link';
+import Title from '@component/Title';
 
-const Home = () => {
-  return (
-    <React.Fragment>
-      <Helmet>
-        <title>Home page</title>
-      </Helmet>
-      <section className={s.root}>
-        <div>
-          <h1 className={s.header1}>
-            Quick setup for new performance orientated, offline–first React.js
-            applications
-          </h1>
-          <LinkA
-            link="https://github.com/sergeypriakhin/react-redux-ts-boilerplate"
-            title="Source"
-          />
-        </div>
-      </section>
-    </React.Fragment>
-  );
-};
+export interface HomeProps {}
 
-export default Home;
+class Home extends React.Component<HomeProps> {
+  // Since state and props are static,
+  // there's no need to re-render this component
+  shouldComponentUpdate() {
+    return false;
+  }
+
+  public render() {
+    return (
+      <React.Fragment>
+        <Helmet>
+          <title>Home page</title>
+        </Helmet>
+        <Title>Boilerplate for React with Redux, TypeScript and routing.</Title>
+      </React.Fragment>
+    );
+  }
+}
+
+export default connect(
+  null,
+  null
+)(Home);
