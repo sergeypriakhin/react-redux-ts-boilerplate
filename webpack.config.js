@@ -3,12 +3,10 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WebpackPwaManifest = require("webpack-pwa-manifest");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const TSLintPlugin = require("tslint-webpack-plugin");
 
 module.exports = function(env, argv) {
   const isDev = argv.mode === "development";
 
-  console.log("isDev", isDev);
   return {
     target: "web",
     context: __dirname,
@@ -46,16 +44,16 @@ module.exports = function(env, argv) {
     module: {
       rules: [
         {
-          test: /\.(ts|tsx)$/,
-          loader: "ts-loader",
-          exclude: /node_modules/
+          enforce: "pre",
+          test: /\.(js|ts|tsx)$/,
+          exclude: /node_modules/,
+          loader: "eslint-loader"
         },
         {
           test: /\.(ts|tsx)$/,
-          loader: "stylelint-custom-processor-loader",
+          loader: "ts-loader" ,
           exclude: /node_modules/
         },
-        // { enforce: 'pre', test: /\.(ts|tsx)$/, loader: 'tslint' },
         {
           // Preprocess our own .css files
           // This is the place to add your own loaders (e.g. sass/less etc.)
@@ -120,9 +118,6 @@ module.exports = function(env, argv) {
         description: "React boilerplate-based project!",
         background_color: "#fafafa",
         theme_color: "#b1624d"
-      }),
-      new TSLintPlugin({
-        files: ["./src/**/*.{ts,tsx}"]
       }),
       new webpack.NamedModulesPlugin(),
       new webpack.HotModuleReplacementPlugin()
