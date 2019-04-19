@@ -43,12 +43,12 @@ module.exports = function(env, argv) {
 
     module: {
       rules: [
-        {
-          enforce: "pre",
-          test: /\.(js|ts|tsx)$/,
-          exclude: /node_modules/,
-          loader: "eslint-loader"
-        },
+        // {
+        //   enforce: "pre",
+        //   test: /\.(js|ts|tsx)$/,
+        //   exclude: /node_modules/,
+        //   loader: "eslint-loader"
+        // },
         {
           test: /\.(ts|tsx)$/,
           loader: "ts-loader" ,
@@ -78,26 +78,26 @@ module.exports = function(env, argv) {
 
     optimization: isDev
       ? {
-          minimize: false,
-          nodeEnv: "development"
-        }
+        minimize: false,
+        nodeEnv: "development"
+      }
       : {
-          minimize: true,
-          nodeEnv: "production",
-          sideEffects: true,
-          concatenateModules: true,
-          splitChunks: { chunks: "all" },
-          runtimeChunk: true
-        },
+        minimize: true,
+        nodeEnv: "production",
+        sideEffects: true,
+        concatenateModules: true,
+        splitChunks: { chunks: "all" },
+        runtimeChunk: true
+      },
 
     performance: isDev
       ? {
-          hints: false
-        }
+        hints: false
+      }
       : {
-          hints: "warning",
-          maxEntrypointSize: 400000
-        },
+        hints: "warning",
+        maxEntrypointSize: 400000
+      },
 
     plugins: [
       new webpack.WatchIgnorePlugin([/scss\.d\.ts$/]),

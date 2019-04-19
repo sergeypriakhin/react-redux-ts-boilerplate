@@ -1,14 +1,12 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
-import Title from '@component/Title';
+import * as React from "react";
+import { connect } from "react-redux";
+import { Helmet } from "react-helmet";
+import Title from "@component/Title";
 
-export interface HomeProps {}
-
-class Home extends React.Component<HomeProps> {
+class Home extends React.Component {
   // Since state and props are static,
   // there's no need to re-render this component
-  shouldComponentUpdate() {
+  public shouldComponentUpdate() {
     return false;
   }
 

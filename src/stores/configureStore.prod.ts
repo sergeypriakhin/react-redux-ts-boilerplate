@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import rootReducer from '../root-reducer';
 
 function configureStore(initialState?: object) {
-	return createStore(rootReducer, initialState!, applyMiddleware(thunk));
+  return createStore(rootReducer, initialState, applyMiddleware(thunk));
 }
 
 // pass an optional param to rehydrate state on app start

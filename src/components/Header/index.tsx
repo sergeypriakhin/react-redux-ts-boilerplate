@@ -1,7 +1,9 @@
-import * as React from 'react';
-import styled from 'styled-components';
+import * as React from "react";
+import styled from "styled-components";
 
-interface HeaderProps {}
+interface IHeaderProps {
+  title?: string;
+}
 
 const HeaderWrap = styled.header`
   box-sizing: border-box;
@@ -27,14 +29,19 @@ const Logo = styled.a`
   font-size: 1rem;
 `;
 
-const Header: React.SFC<HeaderProps> = props => {
+const Header: React.SFC<IHeaderProps> = props => {
+  const { title } = props;
   return (
     <HeaderWrap>
       <Container>
-        <Logo>tsreact-boilerplate</Logo>
+        <Logo>{title}</Logo>
       </Container>
     </HeaderWrap>
   );
+};
+
+Header.defaultProps = {
+  title: "tsreact-boilerplate"
 };
 
 export default Header;
