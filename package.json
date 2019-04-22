@@ -6,8 +6,8 @@
   "scripts": {
     "clean": "rimraf build",
     "lint:css": "stylelint './src/**'",
-    "lint": "eslint --debug './src/**'",
-    "lint:write": "eslint --debug './src/**' --fix",
+    "lint": "eslint --debug './src/**/*.{ts,tsx}'",
+    "lint:write": "eslint --debug './src/**/*.{ts,tsx}' --fix",
     "watch": "webpack --watch",
     "start:dev": "webpack-dev-server --mode development",
     "dev": "npm run start:dev",
@@ -17,15 +17,14 @@
     "test:cov": "jest --coverage",
     "test:watch": "jest --watchAll"
   },
-  "//husky": {
-    "//hooks": {
-      "//pre-commit": "lint-staged"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
     }
   },
-  "//lint-staged": {
-    "//*.(js|jsx|ts|tsx)": [
-      "//yarn lint:write",
-      "//git add"
+  "lint-staged": {
+    "*.(js|jsx|ts|tsx)": [
+      "yarn lint:write"
     ]
   },
   "jest": {

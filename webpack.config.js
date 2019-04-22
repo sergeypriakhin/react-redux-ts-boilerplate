@@ -43,12 +43,6 @@ module.exports = function(env, argv) {
 
     module: {
       rules: [
-        // {
-        //   enforce: "pre",
-        //   test: /\.(js|ts|tsx)$/,
-        //   exclude: /node_modules/,
-        //   loader: "eslint-loader"
-        // },
         {
           test: /\.(ts|tsx)$/,
           loader: "ts-loader" ,

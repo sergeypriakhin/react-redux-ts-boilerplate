@@ -58,3 +58,7 @@ declare interface SetConstructor {
 }
 /** Partial Set constructor representing what's available in IE 11 */
 declare var Set: SetConstructor;
+
+declare interface Window {
+  __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: any;
+}

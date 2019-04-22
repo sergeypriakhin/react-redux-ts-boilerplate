@@ -6,20 +6,21 @@ import { AppContainer as HotContainer } from "react-hot-loader";
 import store from "./stores/configureStore";
 import App from "@component/App";
 
-const render = () =>
+const render = (Component: React.ComponentType) => {
   ReactDOM.render(
     <HotContainer>
       <Provider store={store} key="provider">
         <BrowserRouter>
-          <App />
+          <Component />
         </BrowserRouter>
       </Provider>
     </HotContainer>,
     document.getElementById("app") as HTMLElement
-  );
+  )
+};
 
-render();
+render(App);
 
-if ((module as any).hot) {
-  (module as any).hot.accept("./components/App", () => render());
+if (module.hot) {
+  module.hot.accept("./components/App", () => { render(App) });
 }
