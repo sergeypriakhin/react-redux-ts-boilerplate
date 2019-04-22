@@ -23,8 +23,9 @@
     }
   },
   "lint-staged": {
-    "*.(js|jsx|ts|tsx)": [
-      "yarn lint:write"
+    "*.(ts|tsx)": [
+      "yarn lint:write",
+      "git add"
     ]
   },
   "jest": {
