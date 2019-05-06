@@ -5,14 +5,14 @@ import { ThemeProvider } from 'styled-components';
 // import theme from 'styled-theming';
 
 import Home from '@page/Home';
-import MainLayout from '@component/Layout';
+import BaseLayout from '@component/Layouts/BaseLayout';
 
 import GlobalStyle from '../../global-styles';
 
 export default function App() {
   return (
     <ThemeProvider theme={{ mode: 'light' }}>
-      <MainLayout>
+      <BaseLayout>
         <Helmet defaultTitle="Typescript React Boilerplate">
           <meta
             name="description"
@@ -23,7 +23,7 @@ export default function App() {
           <Route exact={true} path="/" component={Home} />
         </Switch>
         <GlobalStyle />
-      </MainLayout>
+      </BaseLayout>
     </ThemeProvider>
   );
 }

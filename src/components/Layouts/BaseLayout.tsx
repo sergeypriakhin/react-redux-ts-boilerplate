@@ -5,7 +5,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export default function MainLayout(props: Props) {
+export default function BaseLayout(props: Props) {
   const { children } = props;
   return (
     <React.Fragment>
