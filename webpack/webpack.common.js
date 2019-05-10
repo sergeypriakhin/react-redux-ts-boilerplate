@@ -6,10 +6,8 @@ const WebpackPwaManifest = require("webpack-pwa-manifest");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  context: __dirname,
-
   output: {
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve("build"),
     filename: "js/[name].bundle.js",
     chunkFilename: "js/[name].chunk.js",
     publicPath: "/"
@@ -19,9 +17,9 @@ module.exports = {
     // Add '.ts' and '.tsx' as resolvable extensions.
     extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
     alias: {
-      "@page": path.resolve(__dirname, "src/pages/"),
-      "@module": path.resolve(__dirname, "src/modules/"),
-      "@component": path.resolve(__dirname, "src/components/")
+      "@page": path.resolve("src/pages/"),
+      "@module": path.resolve("src/modules/"),
+      "@component": path.resolve("src/components/")
     }
   },
 
@@ -58,9 +56,9 @@ module.exports = {
     new webpack.WatchIgnorePlugin([/scss\.d\.ts$/]),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
-      filename: "./index.html",
-      favicon: "./src/favicon.ico"
+      template: path.resolve("src", "index.html"),
+      filename: "index.html",
+      favicon: path.resolve("src", "favicon.ico")
     }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output

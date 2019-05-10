@@ -1,18 +1,19 @@
+const path = require("path");
 const merge = require("webpack-merge");
-const common = require("./webpack.common.js");
+const common = require("./webpack.common");
 
 module.exports = merge(common, {
   mode: "production",
   target: "web",
   entry: {
-    app: './src/index.tsx',
+    app: path.resolve("src", "index.tsx"),
     vendor: ['react', 'react-dom', 'react-router-dom', 'react-redux', 'react-router', 'redux', 'redux-thunk'],
   },
   devtool: "source-map",
 
   optimization: {
     minimize: true,
-    nodeEnv: "production",
+    nodeEnv: "prod",
     sideEffects: true,
     concatenateModules: true,
     splitChunks: { chunks: "all" },

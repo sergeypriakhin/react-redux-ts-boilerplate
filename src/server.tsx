@@ -6,7 +6,7 @@ import * as ReactDOMServer from 'react-dom/server';
 import * as webpack from 'webpack';
 import * as webpackDevMiddleware from 'webpack-dev-middleware';
 import * as webpackHotMiddleware from 'webpack-hot-middleware';
-import * as webpackDev from '../webpack.dev.js';
+import * as webpackConfig from '../webpack.config';
 import { Provider } from "react-redux";
 import { StaticRouter } from "react-router-dom";
 import store from "./stores/configureStore";
@@ -44,7 +44,7 @@ const serverRenderer = (req: express.Request, res: express.Response) => {
   })
 }
 
-const compiler: webpack.Compiler = webpack(webpackDev);
+const compiler: webpack.Compiler = webpack(webpackConfig());
 const options: webpackDevMiddleware.Options = {
   publicPath: '/',
   serverSideRender: true,

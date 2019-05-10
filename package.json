@@ -8,7 +8,9 @@
     "lint": "eslint --debug './src/**/*.{ts,tsx}'",
     "lint:write": "eslint --debug './src/**/*.{ts,tsx}' --fix",
     "dev": "export NODE_ENV=dev && nodemon ./src/serverDev.ts",
-    "build": "npm run clean && webpack --config webpack.prod.js",
+    "build:client": "export NODE_ENV=prod && webpack",
+    "build:server": "export NODE_ENV=server && webpack",
+    "build": "npm run clean && npm run build:client && npm run build:server",
     "test:clean": "rimraf coverage",
     "test": "jest",
     "test:cov": "jest --coverage",
@@ -128,6 +130,7 @@
     "webpack-dev-server": "^3.1.11",
     "webpack-hot-middleware": "^2.24.4",
     "webpack-merge": "^4.2.1",
+    "webpack-node-externals": "^1.7.2",
     "webpack-pwa-manifest": "^3.6.2"
   },
   "dependencies": {
