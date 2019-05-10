@@ -3,13 +3,17 @@ import * as fs from 'fs';
 import * as express from 'express';
 import * as React from 'react';
 import * as ReactDOMServer from 'react-dom/server';
+import * as webpack from 'webpack';
+import * as webpackDevMiddleware from 'webpack-dev-middleware';
+import * as webpackHotMiddleware from 'webpack-hot-middleware';
+import * as webpackDev from '../webpack.dev.js';
 import { Provider } from "react-redux";
 import { StaticRouter } from "react-router-dom";
 import store from "./stores/configureStore";
 import { renderRoutes } from "react-router-config";
 import routes from './routes';
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3003;
 const app = express();
 
 const router = express.Router();
@@ -39,16 +43,25 @@ const serverRenderer = (req: express.Request, res: express.Response) => {
     )
   })
 }
-router.use('^/$', serverRenderer)
 
-router.use(
-  express.static(path.resolve(__dirname, '..', 'build'), { maxAge: '30d' })
-)
+const compiler: webpack.Compiler = webpack(webpackDev);
+const options: webpackDevMiddleware.Options = {
+  publicPath: '/',
+  serverSideRender: true,
+  stats: {
+    colors: true,
+  },
+};
 
+router.use(webpackDevMiddleware(compiler, options));
+router.use(webpackHotMiddleware(compiler));
+
+router.use('^/$', serverRenderer);
+
+app.use(express.static(path.resolve('build'), { maxAge: '30d' }));
 // tell the app to use the above rules
 app.use(router)
 
-// app.use(express.static('./build'))
 app.listen(PORT, () => {
-  console.log(`SSR running on port ${PORT} 😎`)
+  console.log(`SSR running on port ${PORT} 😎`);
 })

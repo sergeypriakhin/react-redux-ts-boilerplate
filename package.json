@@ -8,11 +8,18 @@
     "lint": "eslint --debug './src/**/*.{ts,tsx}'",
     "lint:write": "eslint --debug './src/**/*.{ts,tsx}' --fix",
     "dev": "export NODE_ENV=dev && nodemon ./src/serverDev.ts",
-    "build": "npm run clean && webpack --color -p --progress --hide-modules --display-optimization-bailout --mode production",
+    "build": "npm run clean && webpack --config webpack.prod.js",
     "test:clean": "rimraf coverage",
     "test": "jest",
     "test:cov": "jest --coverage",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "postinstall": "link-module-alias",
+    "preinstall": "command -v link-module-alias && link-module-alias clean || true"
+  },
+  "_moduleAliases": {
+    "@page": "./src/pages",
+    "@component": "./src/components",
+    "@module": "./src/modules"
   },
   "husky": {
     "hooks": {
@@ -77,9 +84,13 @@
     "@types/redux-logger": "^3.0.6",
     "@types/styled-components": "^4.1.4",
     "@types/styled-theming": "^2.2.0",
+    "@types/webpack": "^4.4.31",
+    "@types/webpack-dev-middleware": "^2.0.2",
     "@types/webpack-env": "^1.13.9",
+    "@types/webpack-hot-middleware": "^2.16.5",
     "@typescript-eslint/eslint-plugin": "^1.4.2",
     "@typescript-eslint/parser": "^1.4.2",
+    "clean-webpack-plugin": "^2.0.2",
     "css-loader": "^0.28.11",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
@@ -91,11 +102,11 @@
     "html-webpack-plugin": "^3.2.0",
     "husky": "^1.3.1",
     "jest": "^23.3.0",
+    "link-module-alias": "^1.2.0",
     "lint-staged": "^8.1.5",
     "mini-css-extract-plugin": "^0.4.0",
     "nodemon": "^1.19.0",
     "react-app-rewired": "^1.6.2",
-    "react-hot-loader": "^4.6.0",
     "react-router-config": "^5.0.0",
     "react-test-renderer": "^16.4.1",
     "redux-logger": "^3.0.6",
@@ -113,7 +124,10 @@
     "typescript": "^3.2.2",
     "webpack": "^4.12.1",
     "webpack-cli": "^3.1.2",
+    "webpack-dev-middleware": "^3.6.2",
     "webpack-dev-server": "^3.1.11",
+    "webpack-hot-middleware": "^2.24.4",
+    "webpack-merge": "^4.2.1",
     "webpack-pwa-manifest": "^3.6.2"
   },
   "dependencies": {

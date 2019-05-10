@@ -22,7 +22,8 @@ const store = configureStore();
 
 if (module.hot) {
   module.hot.accept("../root-reducer", () => {
-    store.replaceReducer(rootReducer);
+    const nextReducer = require('../root-reducer').default;
+    store.replaceReducer(nextReducer);
   });
 }
 
