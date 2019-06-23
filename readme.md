@@ -21,7 +21,7 @@ Here's a curated list of packages that you should be at least familiar with befo
 
 ### Linting
 
-- TSLint
+- ESLint
 - Prettier
 - Stylelint
 
