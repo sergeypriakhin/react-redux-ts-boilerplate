@@ -12,12 +12,12 @@ class Home extends React.Component {
 
   public render() {
     return (
-      <React.Fragment>
+      <>
         <Helmet>
           <title>Home page</title>
         </Helmet>
         <Title>Boilerplate for React with Redux, TypeScript and routing.</Title>
-      </React.Fragment>
+      </>
     );
   }
 }

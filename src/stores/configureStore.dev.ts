@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { createLogger } from "redux-logger";
 import thunk from "redux-thunk";
 import rootReducer from "../root-reducer";
@@ -6,12 +6,12 @@ import rootReducer from "../root-reducer";
 const logger = createLogger();
 
 function configureStore(initialState?: object) {
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
   // configure middlewares
   const middlewares = [thunk, logger];
   // compose enhancers
-  const enhancer = composeEnhancers(applyMiddleware(...middlewares));
+  const enhancer = applyMiddleware(...middlewares);
   // create store
 
   return createStore(rootReducer, initialState, enhancer);
@@ -22,7 +22,8 @@ const store = configureStore();
 
 if (module.hot) {
   module.hot.accept("../root-reducer", () => {
-    store.replaceReducer(rootReducer);
+    const nextReducer = require('../root-reducer').default;
+    store.replaceReducer(nextReducer);
   });
 }
 
