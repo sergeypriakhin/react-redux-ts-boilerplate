@@ -29,7 +29,7 @@ const Logo = styled.a`
   font-size: 1rem;
 `;
 
-const Header: React.SFC<IHeaderProps> = props => {
+const Header: React.FunctionComponent<IHeaderProps> = props => {
   const { title } = props;
   return (
     <HeaderWrap>

@@ -13,7 +13,7 @@ import store from "./stores/configureStore";
 import { renderRoutes } from "react-router-config";
 import routes from './routes';
 
-const PORT = process.env.PORT || 3003;
+const PORT = process.env.PORT || 3000;
 const app = express();
 
 const router = express.Router();
