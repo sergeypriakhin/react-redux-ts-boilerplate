@@ -1,5 +1,5 @@
-import BaseLayout from '@component/Layouts/BaseLayout';
-import Home from '@page/Home';
+import BaseLayout from 'component/Layouts/BaseLayout';
+import Home from 'page/Home';
 
 const routes: any = [
   {

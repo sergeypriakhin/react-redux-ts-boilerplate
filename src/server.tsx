@@ -9,8 +9,8 @@ import * as webpackHotMiddleware from 'webpack-hot-middleware';
 import * as webpackConfig from '../webpack.config';
 import { Provider } from "react-redux";
 import { StaticRouter } from "react-router-dom";
-import store from "./stores/configureStore";
 import { renderRoutes } from "react-router-config";
+import store from "./stores/configureStore";
 import routes from './routes';
 
 const PORT = process.env.PORT || 3000;

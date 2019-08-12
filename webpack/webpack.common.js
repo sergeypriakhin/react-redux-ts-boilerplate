@@ -16,11 +16,6 @@ module.exports = {
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
     extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
-    alias: {
-      "@page": path.resolve("src/pages/"),
-      "@module": path.resolve("src/modules/"),
-      "@component": path.resolve("src/components/")
-    }
   },
 
   module: {

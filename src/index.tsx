@@ -2,12 +2,13 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-// import { AppContainer as HotContainer } from "react-hot-loader";
-import store from "./stores/configureStore";
 import { renderRoutes } from "react-router-config";
+import store from "./stores/configureStore";
 import routes from './routes';
 
-ReactDOM.hydrate(
+const renderMethod = !!module.hot ? ReactDOM.render : ReactDOM.hydrate;
+
+renderMethod(
   <Provider store={store} key="provider">
     <BrowserRouter>
       {renderRoutes(routes)}
