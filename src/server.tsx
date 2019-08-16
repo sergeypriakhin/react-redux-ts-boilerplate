@@ -10,8 +10,13 @@ import * as webpackConfig from '../webpack.config';
 import { Provider } from "react-redux";
 import { StaticRouter } from "react-router-dom";
 import { renderRoutes } from "react-router-config";
+
+import LanguageProvider from 'module/LanguageProvider';
+
 import store from "./stores/configureStore";
 import routes from './routes';
+import { messages } from './intl';
+
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -29,9 +34,11 @@ const serverRenderer = (req: express.Request, res: express.Response) => {
 
     const app = ReactDOMServer.renderToString(
       <Provider store={store} key="provider">
-        <StaticRouter location={req.url} context={context}>
-          {renderRoutes(routes)}
-        </StaticRouter>
+        <LanguageProvider messages={messages}>
+          <StaticRouter location={req.url} context={context}>
+            {renderRoutes(routes)}
+          </StaticRouter>
+        </LanguageProvider>
       </Provider>
     );
 

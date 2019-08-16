@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import { createLogger } from "redux-logger";
 import thunk from "redux-thunk";
 import rootReducer from "../root-reducer";
@@ -6,15 +6,14 @@ import rootReducer from "../root-reducer";
 const logger = createLogger();
 
 function configureStore(initialState?: object) {
-  // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
+  const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
   // configure middlewares
   const middlewares = [thunk, logger];
   // compose enhancers
   const enhancer = applyMiddleware(...middlewares);
   // create store
 
-  return createStore(rootReducer, initialState, enhancer);
+  return createStore(rootReducer, initialState, composeEnhancers(enhancer));
 }
 
 // pass an optional param to rehydrate state on app start

@@ -1,6 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
 
+import ChangeLocale from 'module/LocaleChange';
+
 interface IHeaderProps {
   title?: string;
 }
@@ -35,6 +37,7 @@ const Header: React.FunctionComponent<IHeaderProps> = props => {
     <HeaderWrap>
       <Container>
         <Logo>{title}</Logo>
+        <ChangeLocale />
       </Container>
     </HeaderWrap>
   );
