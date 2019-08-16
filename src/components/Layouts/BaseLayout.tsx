@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { ThemeProvider } from 'styled-components';
 import { renderRoutes } from "react-router-config";
-import Header from '@component/Header';
+import Header from 'component/Header';
 import GlobalStyle from '../../global-styles';
 
 export default function BaseLayout(props: any) {

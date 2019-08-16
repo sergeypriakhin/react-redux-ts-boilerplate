@@ -19,9 +19,9 @@
     "preinstall": "command -v link-module-alias && link-module-alias clean || true"
   },
   "_moduleAliases": {
-    "@page": "./src/pages",
-    "@component": "./src/components",
-    "@module": "./src/modules"
+    "page": "./src/pages",
+    "component": "./src/components",
+    "module": "./src/modules"
   },
   "husky": {
     "hooks": {
