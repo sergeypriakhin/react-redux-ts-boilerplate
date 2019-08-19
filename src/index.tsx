@@ -8,7 +8,6 @@ import store from "./stores/configureStore";
 import routes from './routes';
 import { messages } from './intl';
 
-
 const renderMethod = !!module.hot ? ReactDOM.render : ReactDOM.hydrate;
 
 renderMethod(

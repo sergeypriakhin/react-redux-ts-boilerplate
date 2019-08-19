@@ -1,6 +1,8 @@
-export function localeChange(locale: string) {
+import { ActionTypes, IChangeLocaleAction, Locale } from './types';
+
+export function localeChange(locale: Locale): IChangeLocaleAction {
   return {
-    type: 'CHANGE_LOCALE',
+    type: ActionTypes.change,
     locale,
   };
 }

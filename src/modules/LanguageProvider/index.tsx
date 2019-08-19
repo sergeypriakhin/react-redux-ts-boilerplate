@@ -4,16 +4,19 @@ import { IntlProvider } from 'react-intl';
 import { createSelector } from 'reselect';
 
 import { makeSelectLocale } from './selectors';
+import { Locale } from './types';
+
+import { DEFAULT_LOCALE } from '../../intl';
 
 interface ILanguageProvider {
-  locale?: 'en' | 'ru';
+  locale?: Locale;
   children: React.ReactNode;
   messages: any;
 };
 
 type LangProviderType = React.FunctionComponent<ILanguageProvider>;
 
-const LanguageProvider: LangProviderType = ({ locale = 'en', messages, children }: ILanguageProvider) => {
+const LanguageProvider: LangProviderType = ({ locale = DEFAULT_LOCALE, messages, children }: ILanguageProvider) => {
   return(
     <IntlProvider locale={locale} messages={messages[locale]}>
       {React.Children.only(children)}

@@ -1,18 +1,20 @@
 import * as React from "react";
+import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
 import { makeSelectLocale } from 'module/LanguageProvider/selectors';
 import { localeChange } from 'module/LanguageProvider/actions';
+import { Locale } from 'module/LanguageProvider/types';
 
 interface ILocalChange {
-  locale: 'en' | 'ru';
+  locale: Locale;
   onLocaleChange(val: string): void;
 };
 
 type LangProviderType = React.FunctionComponent<ILocalChange>;
 
-const LocalChange: LangProviderType = ({ locale = 'en', onLocaleChange}: ILocalChange) => {
+const LocalChange: LangProviderType = ({ locale, onLocaleChange}: ILocalChange) => {
   const handleClick = () => {
     const loc = locale === 'en' ? 'ru' : 'en';
     onLocaleChange(loc);
@@ -26,7 +28,7 @@ const mapStateToProps = createSelector(
   locale => ({ locale })
 );
 
-function mapDispatchToProps(dispatch: any) {
+function mapDispatchToProps(dispatch: Dispatch) {
   return {
     onLocaleChange: (val: string) => dispatch(localeChange(val)),
     dispatch,

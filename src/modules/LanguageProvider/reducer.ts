@@ -1,22 +1,23 @@
-import { DEFAULT_LOCALE, APP_LOCALES } from '../../intl';
+import { DEFAULT_LOCALE, APP_LOCALES } from "../../intl";
+import { ILanguageState, LanguageActions, ActionTypes } from "./types";
 
-export const initialState = {
+export const initialState: ILanguageState= {
   locales: APP_LOCALES,
   locale: DEFAULT_LOCALE
 };
 
-const languageProviderReducer = (state = initialState, action: any) => {
+export function languageProviderReducer(state = initialState, action: LanguageActions): ILanguageState {
   switch (action.type) {
-    case 'CHANGE_LOCALE': {
+    case ActionTypes.change: {
       return {
         ...state,
-        locale: action.locale,
+        locale: action.locale
       };
     }
     default: {
       return state;
     }
   }
-};
+}
 
 export default languageProviderReducer;
