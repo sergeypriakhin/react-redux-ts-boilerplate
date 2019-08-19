@@ -1,21 +1,25 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
+import { ConnectedRouter } from 'connected-react-router';
 import { renderRoutes } from "react-router-config";
 import LanguageProvider from 'module/LanguageProvider';
-import store from "./stores/configureStore";
+import configureStore from "./stores/configureStore";
 import routes from './routes';
 import { messages } from './intl';
+import history from 'utl/history';
 
+// Create redux store with history
+const initialState = {};
+const store = configureStore(initialState, history);
 const renderMethod = !!module.hot ? ReactDOM.render : ReactDOM.hydrate;
 
 renderMethod(
   <Provider store={store} key="provider">
     <LanguageProvider messages={messages}>
-      <BrowserRouter>
+      <ConnectedRouter history={history}>
         {renderRoutes(routes)}
-      </BrowserRouter>
+      </ConnectedRouter>
     </LanguageProvider>
   </Provider>,
   document.getElementById("app") as HTMLElement

@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
-import languageProviderReducer from 'module/LanguageProvider/reducer';
+import { connectRouter } from 'connected-react-router';
 
-export default combineReducers({
-  route: routerReducer,
+import languageProviderReducer from './modules/LanguageProvider/reducer';
+import history from 'utl/history';
+
+export const rootReducer = combineReducers({
+  router: connectRouter(history),
   language: languageProviderReducer,
-});
+})
+
+export type AppState = ReturnType<typeof rootReducer>

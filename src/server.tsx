@@ -8,16 +8,18 @@ import * as webpackDevMiddleware from 'webpack-dev-middleware';
 import * as webpackHotMiddleware from 'webpack-hot-middleware';
 import * as webpackConfig from '../webpack.config';
 import { Provider } from "react-redux";
-import { StaticRouter } from "react-router-dom";
+import { StaticRouter } from "react-router";
 import { renderRoutes } from "react-router-config";
 
-import LanguageProvider from 'module/LanguageProvider';
+import LanguageProvider from './modules/LanguageProvider';
 
-import store from "./stores/configureStore";
+import configureStore from "./stores/configureStore";
 import routes from './routes';
 import { messages } from './intl';
+import history from 'utl/history';
 
-
+const initialState = {};
+const store = configureStore(initialState, history);
 const PORT = process.env.PORT || 3000;
 const app = express();
 

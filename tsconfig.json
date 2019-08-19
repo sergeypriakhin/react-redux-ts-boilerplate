@@ -24,7 +24,8 @@
       // define paths mappings
       "page/*": ["src/pages/*"],
       "module/*": ["src/modules/*"],
-      "component/*": ["src/components/*"]
+      "component/*": ["src/components/*"],
+      "utl/*": ["src/utils/*"]
     }
   },
   "include": ["src"],
