@@ -4,6 +4,7 @@
     "outDir": "dist",
     "target": "es5",
     "module": "commonjs",
+    "resolveJsonModule": true,
     "jsx": "react",
     "allowJs": true,
     "sourceMap": true,

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
+import { FormattedMessage } from 'react-intl';
 import Title from "component/Title";
 
 class Home extends React.Component {
@@ -16,7 +17,9 @@ class Home extends React.Component {
         <Helmet>
           <title>Home page</title>
         </Helmet>
-        <Title>Boilerplate for React with Redux, TypeScript and routing.</Title>
+        <Title>
+          <FormattedMessage id='home.title' />
+        </Title>
       </>
     );
   }
